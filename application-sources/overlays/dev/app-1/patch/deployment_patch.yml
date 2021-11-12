@@ -1,0 +1,6 @@
+- op: replace
+  path: /spec/replicas
+  value: 3
+- op: replace 
+  path: /spec/template/spec/containers/0/image
+  value: nginx:latest

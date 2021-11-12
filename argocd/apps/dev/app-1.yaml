@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-1
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app-1
+  project: default
+  source:
+    path: application-sources/overlays/dev/app-1
+    repoURL: 'https://github.com/Becram/argocd-sample.git'
+    targetRevision: HEAD
+    plugin:
+      name: kustomized-helm
