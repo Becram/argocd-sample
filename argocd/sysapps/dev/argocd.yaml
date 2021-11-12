@@ -13,7 +13,7 @@ spec:
   source:
     path: sysapps/overlays/dev/argocd
     repoURL: 'https://github.com/Becram/argocd-sample.git'
-    targetRevision: HEAD
+    targetRevision: main
     plugin:
       name: kustomized-helm
   syncPolicy:
