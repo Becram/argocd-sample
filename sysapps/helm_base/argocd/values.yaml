@@ -5,16 +5,16 @@ argo-cd:
       repository: ghcr.io/becram/argocd-image-customized
       tag: v1.0
   dex:
-    enabled: true
+    enabled: false 
   controller:
     serviceAccount:
-      create: false
+      create: true
       name: argocd-application-controller
       ## Annotations applied to created service account
-      annotations:
-        eks.amazonaws.com/role-arn: "arn:aws:iam::395092651780:role/argocd-application-controller-eksserviceaccount-role"
-      ## Automount API credentials for the Service Account
-      automountServiceAccountToken: true
+      # annotations:
+      #   eks.amazonaws.com/role-arn: "arn:aws:iam::395092651780:role/argocd-application-controller-eksserviceaccount-role"
+      # ## Automount API credentials for the Service Account
+      # automountServiceAccountToken: true
     resources:
       requests:
         memory: "512Mi"
@@ -23,6 +23,8 @@ argo-cd:
         memory: "2048Mi"
         cpu: "1024m"
     replicas: 2
+    logLevel: debug
+
     enableStatefulSet: true
     extraArgs:
     - --repo-server-timeout-seconds
@@ -41,7 +43,7 @@ argo-cd:
         enabled: false
   repoServer:
     serviceAccount:
-      create: false
+      create: true
     autoscaling:
       enabled: true
       minReplicas: 1
@@ -100,7 +102,7 @@ argo-cd:
     replicas: 1
 
     autoscaling:
-      enabled: true
+      enabled: false
       minReplicas: 1
       maxReplicas: 10
       targetCPUUtilizationPercentage: 75
@@ -118,13 +120,14 @@ argo-cd:
     service:
       type: NodePort
     serviceAccount:
-      create: false
+      create: true
       name: argocd
       ## Annotations applied to created service account
-      annotations:
-        eks.amazonaws.com/role-arn: "arn:aws:iam::395092651780:role/argocd-eksserviceaccount-role"
-      ## Automount API credentials for the Service Account
-      automountServiceAccountToken: true
+      # annotations:
+      #   eks.amazonaws.com/role-arn: "arn:aws:iam::395092651780:role/argocd-eksserviceaccount-role"
+      # ## Automount API credentials for the Service Account
+      # automountServiceAccountToken: true
+    logLevel: debug
     metrics:
       enabled: false
       # service:
@@ -204,5 +207,6 @@ argo-cd:
             args: ["helm dependency build || true"]
           generate:
             command: ["/bin/sh", "-c"]
-            args: ["helm template ../../helm_base --name-template $ARGOCD_APP_NAME --include-crds > ../../helm_base/all.yml && kustomize build"]
-
+            args: ["helm template ../../../helm_base/$ARGOCD_APP_NAME --name-template $ARGOCD_APP_NAME --include-crds > ../../../helm_base/$ARGOCD_APP_NAME/all.yml && kustomize build"]
+  configs:
+    createSecret: true
