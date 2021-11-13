@@ -5,7 +5,7 @@ argo-cd:
       repository: ghcr.io/becram/argocd-image-customized
       tag: v1.0
   dex:
-    enabled: false 
+    enabled: false
   controller:
     serviceAccount:
       create: true
