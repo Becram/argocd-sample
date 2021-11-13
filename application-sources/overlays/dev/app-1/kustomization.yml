@@ -6,7 +6,7 @@ bases:
 
 namespace: app-1
 commonLabels:
-  app.kubernetes.io/part-of: argocd-app-of-apps-example
+  app.kubernetes.io/part-of: argocd
   app.kubernetes.io/managed-by: argocd
 
 
