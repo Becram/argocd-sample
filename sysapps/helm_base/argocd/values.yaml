@@ -194,7 +194,7 @@ argo-cd:
           url: https://charts.helm.sh/stable
         - type: git
           name: argocd-sample
-          url: https://github.com/becram/argocd-sample.git
+          url: https://github.com/Becram/argocd-sample.git
         
         
       configManagementPlugins: |

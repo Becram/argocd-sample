@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/dev
+    path: argocd/apps/dev
     repoURL: 'https://github.com/Becram/argocd-sample.git'
     targetRevision: main
 ---
