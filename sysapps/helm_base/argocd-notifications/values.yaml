@@ -1,0 +1,58 @@
+argocd-notifications:
+  nameOverride: "argocd-notifications"
+  updateStrategy:
+    type: Recreate
+
+  context:
+    # Add custom values into context
+    environmentName: dev
+
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: true
+
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: argocd-notifications-controller
+
+    annotations: {}
+
+  logLevel: debug
+  cm:
+    # Whether helm chart creates controller config map
+    create: true
+
+
+  templates:
+    # For more information: https://argocd-notifications.readthedocs.io/en/stable/templates/
+
+    template.app-sync-succeeded: |
+      message: |
+        :grin: {{.app.metadata.name}} has been deployed!.
+
+        ```{{(call .repo.GetCommitMetadata .app.status.sync.revision).Message}}```
+
+    template.app-sync-running: |
+      message: |
+        :hourglass_flowing_sand: {{.app.metadata.name}} has started syncing.
+
+        ```{{(call .repo.GetCommitMetadata .app.status.sync.revision).Message}}```
+
+    template.app-sync-failed: |
+      message: |
+        :cry: {{.app.metadata.name}} has failed with error `{{.app.status.operationState.message}}`.
+
+        ```{{(call .repo.GetCommitMetadata .app.status.sync.revision).Message}}```
+
+  tolerations: []
+
+  triggers:
+    # For more information: https://argocd-notifications.readthedocs.io/en/stable/triggers/
+
+    trigger.sync-operation-change: |
+      - when: app.status.operationState.phase in ['Succeeded']
+        send: [app-sync-succeeded]
+      - when: app.status.operationState.phase in ['Running']
+        send: [app-sync-running]
+      - when: app.status.operationState.phase in ['Error', 'Failed']
+        send: [app-sync-failed]

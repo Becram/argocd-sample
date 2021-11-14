@@ -1,0 +1,6 @@
+argocd-notifications:
+  notifiers:
+    service.slack: |
+      apiURL: "https://hooks.slack.com/services/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"
+
+
