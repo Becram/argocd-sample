@@ -11,7 +11,7 @@ commonLabels:
 
 
 resources:
-- all.yml
+- namespace.yml
 
 
 # patchesJson6902:

@@ -1,5 +1,4 @@
 argo-cd:
-  installCRDs: true
   global:
     image:
       repository: ghcr.io/becram/argocd-image-customized
@@ -24,7 +23,6 @@ argo-cd:
         cpu: "1024m"
     replicas: 2
     logLevel: debug
-
     enableStatefulSet: true
     extraArgs:
     - --repo-server-timeout-seconds
@@ -96,18 +94,15 @@ argo-cd:
           release: kube-prometheus-stack
         namespace: kube-prometheus-stack
         interval: 30s
-        scrapeTimeout: 10s
-
+        scrapeTimeout: 10
   server:
-    replicas: 1
-
+    replicas: 
     autoscaling:
       enabled: false
       minReplicas: 1
       maxReplicas: 10
       targetCPUUtilizationPercentage: 75
-      targetMemoryUtilizationPercentage: 75
-
+      targetMemoryUtilizationPercentage: 7
     resources:
       requests:
         memory: "256Mi"
@@ -138,8 +133,7 @@ argo-cd:
           release: kube-prometheus-stack
         namespace: kube-prometheus-stack
         interval: 30s
-        scrapeTimeout: 10s
-
+        scrapeTimeout: 10
     ingress:
       enabled: false
       annotations:
@@ -181,13 +175,12 @@ argo-cd:
         p, role:org-admin, gpgkeys, create, *, allow
         p, role:org-admin, gpgkeys, get, *, allow
         p, role:org-admin, gpgkeys, delete, *, allow
-
         g, /ArgoCDAdmins, role:org-admin
     config:
       kustomize.buildOptions: "--enable-alpha-plugins"
       url: https://deploy.example.com
       application.instanceLabelKey: argocd.argoproj.io/instance
-#      users.anonymous.enabled: "true"
+      users.anonymous.enabled: "true"
       repositories: |
         - type: helm
           name: argo-cd
@@ -198,8 +191,8 @@ argo-cd:
         - type: git
           name: argocd-sample
           url: https://github.com/Becram/argocd-sample.git
-        
-        
+
+
       configManagementPlugins: |
         - name: kustomized-helm
           init:
