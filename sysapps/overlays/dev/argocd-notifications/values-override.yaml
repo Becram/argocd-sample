@@ -1,6 +1,10 @@
 argocd-notifications:
+  secret:
+    create: true
+    items:
+      slack-token: "xapp-1-A02M9D8A274-2747150874032-613bbac9c5d38e65be82b1f1482194d41435282a1565334d96227031d0898473"
+
   notifiers:
     service.slack: |
       apiURL: "https://hooks.slack.com/services/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"
-
-
+      token: $slack-token
