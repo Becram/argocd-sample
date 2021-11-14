@@ -43,7 +43,7 @@ argo-cd:
     serviceAccount:
       create: true
     autoscaling:
-      enabled: true
+      enabled: false
       minReplicas: 1
       maxReplicas: 10
       targetCPUUtilizationPercentage: 90
@@ -96,7 +96,7 @@ argo-cd:
         interval: 30s
         scrapeTimeout: 10
   server:
-    replicas: 
+    replicas: 1
     autoscaling:
       enabled: false
       minReplicas: 1
@@ -180,7 +180,7 @@ argo-cd:
       kustomize.buildOptions: "--enable-alpha-plugins"
       url: https://deploy.example.com
       application.instanceLabelKey: argocd.argoproj.io/instance
-      users.anonymous.enabled: "true"
+      users.anonymous.enabled: "false"
       repositories: |
         - type: helm
           name: argo-cd
@@ -200,6 +200,6 @@ argo-cd:
             args: ["helm dependency build ../../../helm_base/$ARGOCD_APP_NAME || true"]
           generate:
             command: ["/bin/sh", "-c"]
-            args: ["helm template  ../../../helm_base/$ARGOCD_APP_NAME --name-template $ARGOCD_APP_NAME --include-crds > ../../../helm_base/$ARGOCD_APP_NAME/all.yml && kustomize build"]
+            args: ["helm template  ../../../helm_base/$ARGOCD_APP_NAME --name-template $ARGOCD_APP_NAME -f values-override.yaml --include-crds > ../../../helm_base/$ARGOCD_APP_NAME/all.yml && kustomize build"]
   configs:
     createSecret: true
