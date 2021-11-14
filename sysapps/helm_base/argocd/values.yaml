@@ -21,7 +21,7 @@ argo-cd:
       limits:
         memory: "2048Mi"
         cpu: "1024m"
-    replicas: 2
+    replicas: 1
     logLevel: debug
     enableStatefulSet: true
     extraArgs:
