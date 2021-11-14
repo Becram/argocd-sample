@@ -1,2 +1,4 @@
+application-sources/**/charts
+application-sources/**/Chart.lock
 sysapps/**/charts
 sysapps/**/Chart.lock

@@ -197,9 +197,9 @@ argo-cd:
         - name: kustomized-helm
           init:
             command: ["/bin/sh", "-c"]
-            args: ["helm dependency build || true"]
+            args: ["helm dependency build ../../../helm_base/$ARGOCD_APP_NAME || true"]
           generate:
             command: ["/bin/sh", "-c"]
-            args: ["helm template ../../../helm_base/$ARGOCD_APP_NAME --name-template $ARGOCD_APP_NAME --include-crds > ../../../helm_base/$ARGOCD_APP_NAME/all.yml && kustomize build"]
+            args: ["helm template  ../../../helm_base/$ARGOCD_APP_NAME --name-template $ARGOCD_APP_NAME --include-crds > ../../../helm_base/$ARGOCD_APP_NAME/all.yml && kustomize build"]
   configs:
     createSecret: true
