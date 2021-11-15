@@ -22,7 +22,6 @@ argocd-notifications:
     # Whether helm chart creates controller config map
     create: true
 
-
   templates:
     # For more information: https://argocd-notifications.readthedocs.io/en/stable/templates/
 
