@@ -1,12 +1,12 @@
 ingress-nginx:
   controller:
     replicaCount: 2
-  service:
-    annotations:
-      service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
-      service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
-      service.beta.kubernetes.io/aws-load-balancer-type: 'external'
-      service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: instance
-      service.beta.kubernetes.io/aws-load-balancer-ssl-ports: '443'
-      service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
-      service.beta.kubernetes.io/aws-load-balancer-eip-allocations: "eipassoc-0a57d43f3f138e5c3"
+    service:
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+        service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
+        service.beta.kubernetes.io/aws-load-balancer-type: 'external'
+        service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: instance
+        service.beta.kubernetes.io/aws-load-balancer-ssl-ports: '443'
+        service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+        service.beta.kubernetes.io/aws-load-balancer-eip-allocations: "eipassoc-0a57d43f3f138e5c3"
