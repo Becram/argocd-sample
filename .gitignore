@@ -1,4 +1,6 @@
 application-sources/**/charts
 application-sources/**/Chart.lock
+application-sources/**/all.yaml
 sysapps/**/charts
 sysapps/**/Chart.lock
+sysapps/**/all.yaml

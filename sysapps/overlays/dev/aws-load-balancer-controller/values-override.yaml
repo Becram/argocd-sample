@@ -1,0 +1,9 @@
+aws-load-balancer-controller:
+  replicaCount: 1
+  clusterName: "eks-production-cluster"
+
+  serviceAccount:
+    create: true
+    annotations:
+      eks.amazonaws.com/role-arn: "arn:aws:iam::725061457686:role/aws-load-balancer-eksserviceaccount-role"
+    name: "aws-load-balancer"
