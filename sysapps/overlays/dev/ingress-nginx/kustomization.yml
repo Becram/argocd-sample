@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../../helm_base/ingress-nginx
+
+namespace: ingress-nginx
+commonLabels:
+  app.kubernetes.io/managed-by: argocd
+  app.kubernetes.io/part-of: argocd
+
+
+resources:
+- namespace.yml
+
+
+# patchesJson6902:
+# - target:
+#     group: apps
+#     version: v1
+#     kind: Deployment
+#     name: test-helm-guestbook
+#   path: patch/deployment_patch.yml
