@@ -1,9 +1,10 @@
 aws-load-balancer-controller:
+  fullnameOverride:
   replicaCount: 1
   clusterName: "eks-production-cluster"
-  
-  logLevel: debug
 
+  logLevel: debug
+  keepTLSSecret: true
   serviceAccount:
     create: true
     annotations:
