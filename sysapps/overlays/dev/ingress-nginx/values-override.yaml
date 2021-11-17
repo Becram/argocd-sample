@@ -9,4 +9,4 @@ ingress-nginx:
         service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: instance
         service.beta.kubernetes.io/aws-load-balancer-ssl-ports: '443'
         service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
-        service.beta.kubernetes.io/aws-load-balancer-eip-allocations: "eipassoc-0a57d43f3f138e5c3,eipalloc-05ffdbea84be137dc,eipalloc-061c4c7e762e6bc37"
+        service.beta.kubernetes.io/aws-load-balancer-eip-allocations: "eipalloc-0d2b8b480bc2887b2,eipalloc-0ff99968e333a12d8,eipalloc-053cb004b1043a5c1"
