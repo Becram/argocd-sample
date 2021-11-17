@@ -3,7 +3,6 @@ kind: Kustomization
 
 commonLabels:
   app: aws-load-balancer-controller
-  app.kubernetes.io/managed-by: argocd
 
 resources:
 - all.yml

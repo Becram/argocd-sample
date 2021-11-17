@@ -3,7 +3,6 @@ kind: Kustomization
 
 commonLabels:
   app: keycloak
-  app.kubernetes.io/managed-by: argocd
 
 resources:
 - all.yml

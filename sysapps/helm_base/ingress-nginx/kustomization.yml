@@ -3,7 +3,6 @@ kind: Kustomization
 
 commonLabels:
   app: ingress-nginx
-  app.kubernetes.io/managed-by: argocd
 
 resources:
 - all.yml

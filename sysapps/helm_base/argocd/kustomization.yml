@@ -3,7 +3,6 @@ kind: Kustomization
 
 commonLabels:
   app: argocd
-  app.kubernetes.io/managed-by: argocd
 
 resources:
 - all.yml

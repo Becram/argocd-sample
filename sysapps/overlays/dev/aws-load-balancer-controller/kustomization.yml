@@ -5,8 +5,6 @@ bases:
 - ../../../helm_base/aws-load-balancer-controller
 
 namespace: aws-load-balancer-controller
-commonLabels:
-  app.kubernetes.io/managed-by: argocd
 
 resources:
 - namespace.yml
