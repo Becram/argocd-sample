@@ -1,6 +1,8 @@
 aws-load-balancer-controller:
   replicaCount: 1
   clusterName: "eks-production-cluster"
+  
+  logLevel: debug
 
   serviceAccount:
     create: true
