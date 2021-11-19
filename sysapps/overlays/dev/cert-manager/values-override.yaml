@@ -1,0 +1,5 @@
+cert-manager:
+  ingressShim:
+    defaultIssuerName: "letsencrypt-prod"
+    defaultIssuerKind: "ClusterIssuer"
+

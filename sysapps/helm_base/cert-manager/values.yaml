@@ -1,0 +1,14 @@
+cert-manager:
+  installCRDs: true
+  image:
+    pullPolicy: Always
+    # defaultIssuerGroup: ""
+  prometheus:
+    enabled: false
+  webhook:
+    replicaCount: 1
+    image:
+      pullPolicy: Always
+  cainjector:
+    image:
+      pullPolicy: Always
