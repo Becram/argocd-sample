@@ -7,8 +7,8 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    server: https://kubernetes.default.svc
-    namespace: default
+    namespace: cert-manager
+    name: in-cluster
   project: default
   source:
     path: sysapps/overlays/dev/cert-manager
