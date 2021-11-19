@@ -2,8 +2,8 @@ apiVersion: v2
 description: A Helm chart for Ingress Ingnix
 name: cert-manager
 type: application
-version: vv1.3.1
+version: v1.3.1
 dependencies:
   - name: cert-manager
-    version: vv1.3.1
+    version: v1.3.1
     repository: https://charts.jetstack.io
