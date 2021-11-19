@@ -1,5 +1,8 @@
 cert-manager:
   installCRDs: true
+  leaderElection:
+    # Override the namespace used to store the ConfigMap for leader election
+    namespace: "cert-manager"
   image:
     pullPolicy: Always
     # defaultIssuerGroup: ""
