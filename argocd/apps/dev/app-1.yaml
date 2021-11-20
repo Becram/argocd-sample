@@ -19,8 +19,8 @@ spec:
     plugin:
       name: kustomized-helm
   ignoreDifferences:
-  - kind: Deployment
-    name: app-1
+  - group: apps
+    kind: Deployment
     jsonPointers:
     - /spec/replicas
   syncPolicy:
