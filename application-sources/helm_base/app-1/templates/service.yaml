@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "helm-guestbook.fullname" . }}
+  name: {{ include "deployment.fullname" . }}
   labels:
-    app: {{ template "helm-guestbook.name" . }}
-    chart: {{ template "helm-guestbook.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+{{ include "deployment.labels" . | indent 4 }}
 spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
   selector:
-    app: {{ template "helm-guestbook.name" . }}
-    release: {{ .Release.Name }}
+    app.kubernetes.io/name: {{ include "deployment.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: ClusterIP
+  ports:
+  {{- range .Values.containers }}
+  {{- if .containerPort }}
+  - protocol: {{ default "TCP" $.Values.protocol }}
+    name: {{ .name }}
+    port: {{ .containerPort }}
+  {{- end }}
+  {{- end }}

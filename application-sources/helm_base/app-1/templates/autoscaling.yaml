@@ -1,0 +1,26 @@
+{{- if .Values.hpa -}}
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "deployment.fullname" . }}
+  labels:
+{{ include "deployment.labels" . | indent 4 }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "deployment.fullname" . }}
+  minReplicas: {{ .Values.hpa.minReplicas }}
+  maxReplicas: {{ .Values.hpa.maxReplicas }}
+  metrics:
+  {{- range $index,$hpa := .Values.hpa.metrics }}
+  - type: {{ $hpa.type | default "Pods" | title }}
+    {{ $hpa.type | default "pods" | lower }}:
+      metricName: {{ $hpa.metricName | quote }}
+      targetAverageValue: {{ $hpa.metricValue }}
+    {{- if $hpa.metricSelector }}
+      metricSelector:
+      {{ toYaml $hpa.metricSelector | indent 2 }}
+    {{- end }}
+  {{- end }}
+{{- end }}
