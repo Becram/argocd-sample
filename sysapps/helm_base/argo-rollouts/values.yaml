@@ -1,0 +1,7 @@
+argo-rollouts:
+  installCRDs: true
+  keepCRDs: true
+  dashboard:
+    enabled: true
+    component: rollouts-dashboard
+  
