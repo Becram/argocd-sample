@@ -1,0 +1,5 @@
+clustername: eks-production-cluster
+serviceAccount:
+  annotations:
+     eks.amazonaws.com/role-arn: "arn:aws:iam::725061457686:role/cluster-autoscaler-eksserviceaccount-role"
+image: k8s.gcr.io/autoscaling/cluster-autoscaler:v1.21.0
