@@ -5,8 +5,8 @@
 replicas: 1
 containers:
 - name: demo-api
-  containerPort: 8000
-  image: gcr.io/heptio-images/ks-guestbook-demo:latest
+  containerPort: 80
+  image: nginx:latest
 
 
 
