@@ -180,7 +180,7 @@ argo-cd:
         p, role:org-admin, gpgkeys, create, *, allow
         p, role:org-admin, gpgkeys, get, *, allow
         p, role:org-admin, gpgkeys, delete, *, allow
-        g, /ArgoCDAdmins, role:org-admin
+        g, /ArgoCDAdmins, role:admin
     config:
       kustomize.buildOptions: "--enable-alpha-plugins"
       url: https://deploy.bdhoju.com
