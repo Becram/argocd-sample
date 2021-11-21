@@ -9,6 +9,7 @@ namespace: keycloak
 
 resources:
 - namespace.yml
+- ingress.yaml
 
 
 # patchesJson6902:

@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keycloak
+  namespace: keycloak
+  labels:
+    app.kubernetes.io/name: keycloak
+    helm.sh/chart: keycloak-5.1.7
+    app.kubernetes.io/instance: keycloak
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: keycloak
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: 4m
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: keycloak
+                port:
+                  name: http
+      host: authen.bdhoju.com
+  tls:
+    - hosts:
+        - authen.bdhoju.com
+      secretName: authen.bdhoju.com-tls
