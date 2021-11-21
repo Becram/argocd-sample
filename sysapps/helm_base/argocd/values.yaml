@@ -151,36 +151,9 @@ argo-cd:
     rbacConfig:
       policy.default: role:readonly
       policy.csv: |
-        p, role:org-admin, applications, *, */*, allow
-        p, role:org-admin, applications, get, */*, allow
-        p, role:org-admin, applications, create, */*, allow
-        p, role:org-admin, applications, update, */*, allow
-        p, role:org-admin, applications, delete, */*, allow
-        p, role:org-admin, applications, sync, */*, allow
-        p, role:org-admin, applications, override, */*, allow
-        p, role:org-admin, applications, action/*, */*, allow
-        p, role:org-admin, certificates, create, *, allow
-        p, role:org-admin, certificates, update, *, allow
-        p, role:org-admin, certificates, delete, *, allow
-        p, role:org-admin, certificates, get, *, allow
-        p, role:org-admin, clusters, create, *, allow
-        p, role:org-admin, clusters, update, *, allow
-        p, role:org-admin, clusters, delete, *, allow
-        p, role:org-admin, clusters, get, *, allow
-        p, role:org-admin, repositories, create, *, allow
-        p, role:org-admin, repositories, update, *, allow
-        p, role:org-admin, repositories, delete, *, allow
-        p, role:org-admin, repositories, get, *, allow
-        p, role:org-admin, projects, create, *, allow
-        p, role:org-admin, projects, update, *, allow
-        p, role:org-admin, projects, delete, *, allow
-        p, role:org-admin, projects, get, *, allow
-        p, role:org-admin, accounts, update, *, allow
-        p, role:org-admin, accounts, get, *, allow
-        p, role:org-admin, gpgkeys, create, *, allow
-        p, role:org-admin, gpgkeys, get, *, allow
-        p, role:org-admin, gpgkeys, delete, *, allow
-        g, /ArgoCDAdmins, role:admin
+        p, role:developer, applications, get, */*, allow
+        p, role:developer, applications, update, */*, allow
+        g, /ArgoCDAdmins, role:developer
     config:
       kustomize.buildOptions: "--enable-alpha-plugins"
       url: https://deploy.bdhoju.com
