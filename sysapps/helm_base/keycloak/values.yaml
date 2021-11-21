@@ -6,6 +6,7 @@ keycloak:
     minAvailable: 1
   postgresql:
     enabled: true
+    postgresPassword: "7s2ie4qj2r"
   # externalDatabase:
   #   host: data-engineering.cbfwux5trlzu.ap-southeast-1.rds.amazonaws.com
   #   user: keycloak
