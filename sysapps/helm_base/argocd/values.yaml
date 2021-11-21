@@ -183,7 +183,13 @@ argo-cd:
         g, /ArgoCDAdmins, role:org-admin
     config:
       kustomize.buildOptions: "--enable-alpha-plugins"
-      url: https://deploy.example.com
+      url: https://deploy.bdhoju.com
+      oidc.config: |
+        name: Keycloak
+        issuer: https://auth.bdhoju.com/auth/realms/master
+        clientID: argocd
+        clientSecret: $oidc.keycloak.clientSecret
+        requestedScopes: ["openid", "profile", "email", "groups"]
       application.instanceLabelKey: argocd.argoproj.io/instance
       users.anonymous.enabled: "false"
       repositories: |
