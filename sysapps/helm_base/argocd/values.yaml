@@ -135,13 +135,18 @@ argo-cd:
         interval: 30s
         scrapeTimeout: 10
     ingress:
-      enabled: false
+      enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
+        cert-manager.io/cluster-issuer: letsencrypt-prod
       hosts:
-        - deploy.example.com
+        - deploy.bdhoju.com
       paths:
         - /
+      tls:
+      - secretName: argocd-tls-certificate
+        hosts:
+          - deploy.bdhoju.com
     configEnabled: true
     rbacConfig:
       policy.default: role:readonly
