@@ -4,3 +4,4 @@ application-sources/**/all.yml
 sysapps/**/charts
 sysapps/**/Chart.lock
 sysapps/**/all.yml
+application-sources/**/rollout-test
