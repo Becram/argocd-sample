@@ -12,3 +12,7 @@ keycloak:
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-body-size: 4m
     tls: true
+    extraTls:
+    - hosts:
+      - authen.bdhoju.com
+      secretName: keycloak-tls
