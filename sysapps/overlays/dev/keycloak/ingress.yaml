@@ -5,7 +5,6 @@ metadata:
   namespace: keycloak
   labels:
     app.kubernetes.io/name: keycloak
-    helm.sh/chart: keycloak-5.1.7
     app.kubernetes.io/instance: keycloak
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: keycloak
@@ -26,8 +25,8 @@ spec:
                 name: keycloak
                 port:
                   name: http
-      host: authen.bdhoju.com
+      host: auth.bdhoju.com
   tls:
     - hosts:
-        - authen.bdhoju.com
-      secretName: authen.bdhoju.com-tls
+        - auth.bdhoju.com
+      secretName: auth.bdhoju.com-tls
